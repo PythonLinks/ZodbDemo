@@ -70,6 +70,9 @@ def publish(environ, start_response, principal):
     # It will be use by all the browser component and the publishing
     # process.
     request = Request(environ)
+    conn = environ["zodb.connection"]
+    root=conn.root()
+    root=root.appRoot
 
     # The `Interaction` serves as the "who" in the security model.
     # The security model relies on 2 elements : the "who" and the "how".

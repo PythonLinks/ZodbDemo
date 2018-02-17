@@ -45,7 +45,7 @@ class Cromlech(Viewlet):
         baseurl = self.request.script_name
         if not baseurl.startswith('/'):
             baseurl = '/' + baseurl
-        return "<h1><a href='%s'>Cromlech</a></h1>" % baseurl
+        return "<h1><a href='%s'>ZODB Demo</a></h1>" % baseurl
 
 
 @viewlet

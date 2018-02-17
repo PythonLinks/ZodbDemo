@@ -13,6 +13,7 @@ git+https://github.com/Cromlech/cromlech.location#egg=cromlech.location
 git+https://github.com/Cromlech/cromlech.security#egg=cromlech.security
 git+https://github.com/Cromlech/cromlech.sessions.jwt#egg=cromlech.sessions.jwt
 git+https://github.com/Cromlech/cromlech.webob#egg=cromlech.webob
+git+https://github.com/Cromlech/cromlech.zodb#egg=cromlech.zodb
 
 git+https://github.com/Cromlech/dawnlight#egg=dawnlight
 

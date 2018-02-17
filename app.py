@@ -4,6 +4,8 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+
+
 # We setup the cache for Chameleon templates
 template_cache = os.path.join(HERE, 'cache')
 if not os.path.exists(template_cache):
@@ -32,6 +34,37 @@ load_translations_directories()
 from cromlech.events import setup_dispatcher
 setup_dispatcher()
 
+
+def populate_db(db):
+    """We create two leaves here.. We get the DB connection object.
+    We need to open and to close it. It doesn't need to return anything.
+    Make sure to use a transaction manager to have it correctly persisted.
+    """
+    import transaction
+    from cromdemo.models import Root, Leaf
+    from cromlech.zodb import Connection
+
+    with Connection(db, transaction_manager=transaction.manager) as conn:
+        conn = db.open()
+        root = conn.root()
+        if not hasattr(root,'appRoot'):        
+            appRoot=Root()
+            appRoot.__name__='root'
+            root.appRoot=appRoot
+            appRoot['green'] = Leaf('Green leaf', 'A summer leaf')        
+            appRoot['yellow'] = Leaf('Yellow leaf', 'An automn leaf')
+            transaction.manager.commit()
+
+
+# We read the zodb conf and initialize it
+from cromlech.zodb import init_db
+with open('zodb.conf', 'r') as fd:
+        zodb_config = fd.read()
+        db = init_db(zodb_config)
+        populate_db(db)
+
+
+
 # Getting the crypto key and creating the JWT service
 # We chose the JWT signed cookie for the demo
 # `cromlech.sessions` proposed different backends.
@@ -44,4 +77,6 @@ session_wrapper = JWTCookieSession(key, 300)
 
 # Create the application, including the middlewares.
 from cromdemo.wsgi import demo_application
-application = session_wrapper(demo_application)
+from cromlech.zodb.middleware import ZODBApp
+zodb_application = ZODBApp(demo_application, db, key="zodb.connection")
+application = session_wrapper(zodb_application)
