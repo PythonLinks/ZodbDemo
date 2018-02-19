@@ -41,7 +41,7 @@ def populate_db(db):
     Make sure to use a transaction manager to have it correctly persisted.
     """
     import transaction
-    from cromdemo.models import Root, Leaf
+    from cromdemo.models import Root, TreeBranch,TreeLeaf
     from cromlech.zodb import Connection
 
     with Connection(db, transaction_manager=transaction.manager) as conn:
@@ -51,8 +51,10 @@ def populate_db(db):
             appRoot=Root()
             appRoot.__name__='root'
             root.appRoot=appRoot
-            appRoot['green'] = Leaf('Green leaf', 'A summer leaf')        
-            appRoot['yellow'] = Leaf('Yellow leaf', 'An automn leaf')
+            appRoot['green'] = TreeLeaf(title='Green leaf', body='A summer leaf')        
+            appRoot['yellow'] = TreeBranch(title='Brown Branch', body='You can add leaves to branches')
+            appRoot['red'] = TreeLeaf(title='Green leaf', body='A summer leaf')                    
+            import pdb; pdb.set_trace()
             transaction.manager.commit()
 
 

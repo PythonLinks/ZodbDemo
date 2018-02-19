@@ -37,9 +37,12 @@ class Page(View):
     responseFactory = Response
     make_response = make_layout_response
 
-    def url(self):
-        return get_absolute_url(self.context, self.request)
 
+    def url(self, *args):
+          if len(args)==0:
+               return get_absolute_url(self.context, self.request)
+          else:
+               return  get_absolute_url((args)[0], self.request)
 
 class ErrorPage(Page):
     code = 400

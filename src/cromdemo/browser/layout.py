@@ -33,6 +33,10 @@ class AdminHeader(ViewletManager):
 class ContextualActions(ViewletManager):
     pass
 
+@viewlet_manager
+class Breadcrumbs(ViewletManager):
+    pass
+
 
 @viewlet_manager
 class Footer(ViewletManager):

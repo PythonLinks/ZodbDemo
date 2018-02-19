@@ -4,6 +4,7 @@ git+https://github.com/Cromlech/grokker#egg=grokker
 git+https://github.com/Cromlech/cromlech.browser#egg=cromlech.browser
 git+https://github.com/Cromlech/cromlech.configuration#egg=cromlech.configuration
 git+https://github.com/Cromlech/cromlech.content#egg=cromlech.content
+git+https://github.com/Cromlech/cromlech.container#egg=cromlech.container
 git+https://github.com/Cromlech/cromlech.dawnlight#egg=cromlech.dawnlight
 git+https://github.com/Cromlech/cromlech.events#egg=cromlech.events
 git+https://github.com/Cromlech/cromlech.grok#egg=cromlech.grok
@@ -17,7 +18,9 @@ git+https://github.com/Cromlech/cromlech.zodb#egg=cromlech.zodb
 
 git+https://github.com/Cromlech/dawnlight#egg=dawnlight
 
+git+https://github.com/Cromlech/dolmen.breadcrumbs#egg=dolmen.breadcrumbs
 git+https://github.com/Cromlech/dolmen.collection#egg=dolmen.collection
+git+https://github.com/Cromlech/dolmen.container#egg=dolmen.container
 git+https://github.com/Cromlech/dolmen.forms.base#egg=dolmen.forms.base
 git+https://github.com/Cromlech/dolmen.forms.ztk#egg=dolmen.forms.ztk
 git+https://github.com/Cromlech/dolmen.message#egg=dolmen.message
@@ -25,3 +28,4 @@ git+https://github.com/Cromlech/dolmen.tales#egg=dolmen.tales
 git+https://github.com/Cromlech/dolmen.template#egg=dolmen.template
 git+https://github.com/Cromlech/dolmen.view#egg=dolmen.view
 git+https://github.com/Cromlech/dolmen.viewlet#egg=dolmen.viewlet
+git+https://github.com/PythonLinks/zopache.crud#egg=zopache.crud

@@ -8,9 +8,10 @@ from cromlech.browser.exceptions import HTTPFound
 from cromlech.security import Unauthorized
 from zope.interface import Interface
 from zope.interface.interfaces import ComponentLookupError
-
+from dolmen.container import IBTreeContainer
 from . import tal_template, ITab, Page, ErrorPage
 from ..models import Root, Leaf
+from cromdemo.interfaces import IRootContainer
 from ..auth import logout
 
 
@@ -29,10 +30,9 @@ class Logout(Page):
 
 @view_component
 @name('index')
-@context(Root)
+@context(IBTreeContainer)
 class RootIndex(Page):
     template = tal_template('home.pt')
-
 
 @view_component
 @name('index')

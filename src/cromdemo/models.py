@@ -1,44 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from cromlech.browser.interfaces import IPublicationRoot
-from zope.interface import implementer, Interface
+
+from zope.interface import implementer
 from zope.location import Location, locate
-from zope.schema import Text, TextLine, Password
+from zopache.crud import Leaf, Container
+from .interfaces import ILogin, ITreeLeaf, ITreeBranch, IRootContainer
+
+@implementer(ITreeBranch)
+class TreeBranch(Container):
+
+    def __init__(self, title='', body=''):
+        Container.__init__(self)
+        self.title = title
+        self.body = body        
 
 
-class ILogin(Interface):
+@implementer(ITreeLeaf)
+class TreeLeaf(Leaf):
 
-    username = TextLine(
-        title='Username', required=True)
-
-    password = Password(
-        title='Password', required=True)
-
-
-class ILeaf(Interface):
-
-    title = TextLine(
-        title='Title', required=True)
-
-    body = Text(
-        title='Body', required=True)
-
-
-@implementer(ILeaf)
-class Leaf(Location):
-
-    def __init__(self, title, body):
+    def __init__(self, title='', body=''):
+        Leaf.__init__(self)
         self.title = title
         self.body = body
 
 
-@implementer(IPublicationRoot)
-class Root(dict, Location):
 
+@implementer(IRootContainer)
+class Root(TreeBranch):
     title = u"Demo Root"
 
-    def __getitem__(self, key):
-        item = dict.__getitem__(self, key)
-        if item is not None:
-            locate(item, self, key)
-        return item

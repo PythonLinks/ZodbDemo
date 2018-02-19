@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#This software is subject to the CV and Zope Public Licenses.
 
 import uuid
 from crom import target, order
@@ -7,86 +8,75 @@ from cromlech.browser.exceptions import HTTPFound
 from cromlech.browser.interfaces import IPublicationRoot
 from cromlech.browser.directives import title
 from cromlech.security import permissions
-from dolmen.message import send
 from dolmen.forms.base import Fields, FAILURE
 from dolmen.forms.base import action, name, context, form_component
 from dolmen.forms.base import apply_data_event
 from dolmen.forms.base.errors import Error
-from zope.lifecycleevent import created, added
+from zope.interface import implementer, Interface
 
-from . import ITab, Form
+from zopache.crud.forms  import  AddForm 
+from zopache.crud.baseform import Form
+from ..interfaces import ITab, ITreeLeaf, ITreeBranch
+
 from ..auth import Auth
-from ..models import Leaf, ILeaf, ILogin
-
+from ..interfaces import  ILogin
+from zopache.crud.interfaces import ILeaf, IContainer
+from cromdemo.models import  TreeBranch
+from cromdemo.models import  TreeLeaf
+from dolmen.container import IBTreeContainer, BTreeContainer
+from dolmen.template import TALTemplate
+from zopache.crud.interfaces import IApp
 
 @form_component
-@name('add.leaf')
-@context(IPublicationRoot)
+@name('addLeaf')
+@context(IBTreeContainer)
 @target(ITab)
-@order(50)
-@title("Add a leaf")
+@title("Add Tree Leaf")
 @permissions('Manage')
-class AddLeaf(Form):
-
-    fields = Fields(ILeaf)
+class AddContent(AddForm):
+    label='Add a new Tree Leaf'
+    implements = IApp
+    interface = ITreeLeaf
     ignoreContent = True
-
-    @action('Add')
-    def add(self):
-        data, errors = self.extractData()
-        if errors:
-            self.errors = errors
-            return FAILURE
-
-        uid = str(uuid.uuid4().hex)  # a simple UUID id to avoid conflict.
-        content = Leaf(data['title'], data['body'])
-        created(content)
-        self.context[uid] = content
-        added(content, newParent=self.context, newName=uid)
-        raise HTTPFound(IURL(self.context, self.request))
+    factory=TreeLeaf
 
 
 @form_component
-@name('edit')
-@context(ILeaf)
+@name('addBranch')
+@context(IBTreeContainer)
 @target(ITab)
-@order(20)
-@title("Edit the content")
+@title("Add Tree Branch")
 @permissions('Manage')
-class Edit(Form):
-
-    fields = Fields(ILeaf)
-    ignoreContent = False
-
-    @action('Apply')
-    def apply(self):
-        data, errors = self.extractData()
-        if errors:
-            self.errors = errors
-            return FAILURE
-
-        content = self.getContent()
-        apply_data_event(self.fields, content, data)
-        raise HTTPFound(IURL(content, self.request))
+class AddContentContainer(AddForm):
+    label='Add a new Tree Branch'
+    implements = IApp
+    interface = ITreeBranch
+    ignoreContent = True
+    factory=TreeBranch
 
 
+
+    
 @form_component
 @name('login')
 @context(Auth)
 class Login(Form):
-
+    subTitle='Login Form'
+    title="ZODB Demo"
     fields = Fields(ILogin)
     ignoreContent = True
-
     @property
     def action_url(self):
         return self.request.url
 
+    def breadcrumbs(self):
+        return ''
+    
     @action('Log me')
     def login(self):
         data, errors = self.extractData()
         if errors:
-            self.errors = errors
+            form.errors = errors
             return FAILURE
 
         success = self.context.authenticate(
@@ -97,6 +87,4 @@ class Login(Form):
                 identifier=self.prefix,
             ))
             return FAILURE
-
-        send('Login successful.')
         raise HTTPFound(self.request.url)

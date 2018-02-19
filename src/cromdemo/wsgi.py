@@ -96,7 +96,6 @@ def publish(environ, start_response, principal):
 
 
 def demo_application(environ, start_response):
-
     # Security guards are the security context of the application
     # They have 2 layers : predicate and checks.
     # This context is thread-bound.

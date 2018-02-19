@@ -10,8 +10,8 @@ from cromlech.security import getSecurityGuards, permissions
 
 from . import tal_template, ITab
 from .layout import SiteHeader, AdminHeader, Footer
-from .layout import ContextualActions, AboveContent
-
+from .layout import ContextualActions, AboveContent, Breadcrumbs
+from dolmen.breadcrumbs import BreadcrumbsRenderer
 
 @viewlet
 @slot(AboveContent)
@@ -31,8 +31,20 @@ class Footer(Viewlet):
     def render(self):
         return """
 <div class='container'>
+
+<h3>Credits</h3>
   <em>
-    <a href='https://github.com/Cromlech'>Browse the cromlech repository</a>
+<p>The 
+<a href="https://github.com/PythonLinks/ZodbDemo#Introduction">ZODB Demo</a>
+is built using the 
+<a href="http://https:python.org">Python</a>&nbsp;language,&nbsp;
+the object-oriented&nbsp;<a href="http://www.zodb.org/en/latest/">ZODB</a>
+&nbsp;database,&nbsp;
+the <a href='https://github.com/Cromlech'>Cromlech</a> toolkit, 
+<a href="http://uwsgi-docs.readthedocs.io/en/latest/">uwsgi</a>,&nbsp;
+<a href="https://readthedocs.org/projects/webob/">WebOb</a>, 
+<a href="https://readthedocs.org/projects/zopeinterface/">Zope.Interface</a>
+&nbsp;and many other libraries.&nbsp; Thanks to the innumerable open source volunteers who made this project possible.&nbsp;&copy; Christopher Lozinski 2018.&nbsp; Provided to you by <a href="http://PythonLinks.info">PythonLinks.info</a></p>
   </em>
 </div>"""
 
@@ -67,6 +79,17 @@ class WelcomeMaster(Viewlet):
     def render(self):
         username = self.request.environment['REMOTE_USER']
         return "<p>Welcome, master %s !</p>" % username
+
+
+@viewlet
+@slot(Breadcrumbs)
+class BreadcrumsViewlet(Viewlet):
+    """Shows where we are in the tree.
+    """
+    def render(self):
+       renderer = BreadcrumbsRenderer(self.view.context, self.request)
+       renderer.update()
+       return renderer.render()
 
 
 def sort_key(component):

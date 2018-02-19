@@ -70,6 +70,7 @@
 	<div id="main">
 	  <div tal:replace="structure slot:abovecontent" />
 	  <div tal:replace="structure slot:contextualactions" />
+	  <div tal:replace="structure slot:breadcrumbs" />
 	  <div id="content">
 	    <div tal:replace="structure content" />
 	  </div>
