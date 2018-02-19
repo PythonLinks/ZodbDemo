@@ -7,7 +7,7 @@ from dolmen.viewlet import viewlet, Viewlet
 from cromlech.browser import IURL, slot
 from cromlech.browser.directives import title
 from cromlech.security import getSecurityGuards, permissions
-
+from cromlech.browser import IView
 from . import tal_template, ITab
 from .layout import SiteHeader, AdminHeader, Footer
 from .layout import ContextualActions, AboveContent, Breadcrumbs
@@ -112,7 +112,8 @@ class Tabs(Viewlet):
             }
 
     def update(self):
-        tabs = ITab.all_components(self.context, self.request)
+        #tabs = ITab.all_components(self.context, self.request)
+        tabs=IView.all_components(self.context, self.request)
         predict, _ = getSecurityGuards()
         if predict is not None:
             tabs = (

@@ -4,7 +4,7 @@
   <ul>
     <li tal:repeat="item context.values()">
       <a tal:content="item.title"
-	 tal:attributes="href view.url(item)" />  ${view.url(item)}
+	 tal:attributes="href view.url(item)" />  
     </li>
   </ul>
 </div>
