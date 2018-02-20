@@ -14,5 +14,6 @@
   <grok:grok package="dolmen.forms.ztk" />
   <grok:grok package="dolmen.message" />
     <grok:grok package="zopache.crud" />
+        <grok:grok package="zopache.zmi" />
 
 </configure>

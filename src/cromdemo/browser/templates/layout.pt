@@ -60,13 +60,16 @@
   </head>
   <body>
     <div id="wrapper">
-      <div class="container" id="siteheader">
-	<div class="container">
-	  <div tal:replace="structure slot:siteheader" />
-	  <div tal:replace="structure slot:adminheader" />
-	</div>
-      </div>
       <div class="container" id="page-content-wrapper">
+    <div class="img-fluid" style="float:left; margin:20px">
+      <img src="/fanstatic/zmiicons/PythonLinks.png" width="87"
+	   height="95" ></img>
+	 </div>
+      <h1>${view.title if hasattr(view,'title') else ''}</h1>
+            <h2>${view.subTitle if hasattr(view,'subTitle') else ''}</h2>
+
+    <a name="content"></a>
+
 	<div id="main">
 	  <div tal:replace="structure slot:abovecontent" />
 	  <div tal:replace="structure slot:contextualactions" />

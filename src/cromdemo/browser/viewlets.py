@@ -12,6 +12,7 @@ from . import tal_template, ITab
 from .layout import SiteHeader, AdminHeader, Footer
 from .layout import ContextualActions, AboveContent, Breadcrumbs
 from dolmen.breadcrumbs import BreadcrumbsRenderer
+import operator
 
 @viewlet
 @slot(AboveContent)
@@ -61,6 +62,7 @@ class Cromlech(Viewlet):
 
 
 @viewlet
+@title('Logout')
 @slot(SiteHeader)
 @permissions('View')
 class Logout(Viewlet):
@@ -104,13 +106,17 @@ class Tabs(Viewlet):
 
     def tabs(self):
         url = IURL(self.context, self.request)
+        result = []
+        
         for id, view in self._tabs:
-            yield {
+            result.append( {
                 'active': self.view.__class__ is view,
                 'title': title.get(view) or id,
                 'url': '%s/%s' % (url, id),
-            }
-
+            })
+        result.sort(key=operator.itemgetter('title'))
+        return result
+    
     def update(self):
         #tabs = ITab.all_components(self.context, self.request)
         tabs=IView.all_components(self.context, self.request)

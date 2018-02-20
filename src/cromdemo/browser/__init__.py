@@ -36,13 +36,25 @@ class Form(BaseForm):
 class Page(View):
     responseFactory = Response
     make_response = make_layout_response
-
+    title = 'ZODB Demo'
 
     def url(self, *args):
           if len(args)==0:
                return get_absolute_url(self.context, self.request)
           else:
                return  get_absolute_url((args)[0], self.request)
+
+    def objectHref(self,obj,name):
+        return self.href(self.url(obj),name)
+    
+    def href(self,url,name):
+           result ='<a href=\"'
+           result += url
+           result+='\">'
+           if name != None:
+              result += name
+           result +='</a>'
+           return result
 
 class ErrorPage(Page):
     code = 400

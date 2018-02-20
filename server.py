@@ -54,7 +54,6 @@ def populate_db(db):
             appRoot['green'] = TreeLeaf(title='Green leaf', body='A summer leaf')        
             appRoot['yellow'] = TreeBranch(title='Brown Branch', body='You can add leaves to branches')
             appRoot['red'] = TreeLeaf(title='Green leaf', body='A summer leaf')                    
-            import pdb; pdb.set_trace()
             transaction.manager.commit()
 
 
@@ -80,5 +79,7 @@ session_wrapper = JWTCookieSession(key, 300)
 # Create the application, including the middlewares.
 from cromdemo.wsgi import demo_application
 from cromlech.zodb.middleware import ZODBApp
+from fanstatic import Fanstatic
 zodb_application = ZODBApp(demo_application, db, key="zodb.connection")
-application = session_wrapper(zodb_application)
+fanstatic_app = Fanstatic(zodb_application)
+application = session_wrapper(fanstatic_app)

@@ -13,13 +13,13 @@ from . import tal_template, ITab, Page, ErrorPage
 from ..models import Root, Leaf
 from cromdemo.interfaces import IRootContainer
 from ..auth import logout
-
+from cromlech.browser.directives import title
 
 @view_component
 @name('logout')
 @context(Interface)
 class Logout(Page):
-
+    
     def update(self):
         logout()
 
@@ -30,8 +30,11 @@ class Logout(Page):
 
 @view_component
 @name('index')
+@title('View')
 @context(IBTreeContainer)
 class RootIndex(Page):
+    title='ZODB Demno'
+    subTitle='View a Branch'
     template = tal_template('home.pt')
 
 @view_component
@@ -41,7 +44,8 @@ class RootIndex(Page):
 @order(10)
 class LeafIndex(Page):
     template = tal_template('leaf.pt')
-
+    subTitle='View a Leaf'
+    title='ZODB Demno'
 
 @view_component
 @name('')

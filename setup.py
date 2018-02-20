@@ -43,9 +43,13 @@ setup(name='cromdemo',
           'zope.location',
           'zope.schema',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      [fanstatic.libraries]
-      crom = cromdemo.browser.resources:Library
-      """,
+      entry_points={
+           'paste.app_factory': [
+                'demo = cromdemo.wsgi:demo_application',
+                ],
+           'fanstatic.libraries': [
+               'zmiicons = zopache.zmi:library',
+                ],
+      },
       )
+
