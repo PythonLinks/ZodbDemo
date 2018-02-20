@@ -1,0 +1,65 @@
+CV License (CVL) Version 0.9
+-----------------------------------------------
+
+This software incorporates other software images and text according
+to their license agreements. The software which I wrote is
+Copyright (c) Christopher Lozinski, all rights reserved.
+
+
+Redistribution and use in source and binary forms, with or
+without modification, are permitted provided that the
+following conditions are met:
+
+1. Redistributions in source code must retain the above
+   copyright notice, this list of conditions, and the following
+   disclaimer.
+
+2. Redistributions in binary form must reproduce the above
+   copyright notice, this list of conditions, and the following
+   disclaimer in the documentation and/or other materials
+   provided with the distribution.
+
+3. The names PythonLinks, Zopache and Christopher Lozinski
+   must not be used to
+   endorse or promote products derived from this software
+   without prior written permission from Christopyher Lozinski.
+
+4. The right to distribute this software or to use it for
+   any purpose does not give you the right to use Servicemarks
+   (sm) or Trademarks (tm) of Christopher Lozinski.
+
+5. If any files are modified, you must cause the modified
+   files to carry prominent notices stating that you changed
+   the files and the date of any change.
+
+6. Give credit where credit is due.  At least to the contributors listed
+   on the home page footer.
+
+7. If you are developing with this software, then send a copy of your
+   Curriculum Vitae to Christopher Lozinski lozinski@PythonLinks.info,
+   and give him permission to process your professional data
+   for recruiting purposes.  End users of applications built with this
+   software do not need to do so. 
+
+8. Do not compete with Christopher Lozinski.  He runs PythonLinks.info,
+PrivaCV.com and Zopache.com.
+
+9. Include these clauses with your distributed software.
+
+Disclaimer
+
+  THIS SOFTWARE IS PROVIDED BY Christopher Lozinski ``AS IS''
+  AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
+  NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+  AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN
+  NO EVENT SHALL ZOPE CORPORATION OR ITS CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+  DAMAGE.
+
