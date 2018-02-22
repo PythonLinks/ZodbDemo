@@ -14,8 +14,9 @@ from dolmen.forms.base import apply_data_event
 from dolmen.forms.base.errors import Error
 from zope.interface import implementer, Interface
 
+from zopache.core.breadcrumbs import Breadcrumbs
+from zopache.core.baseform import Form
 from zopache.crud.forms  import  AddForm 
-from zopache.crud.baseform import Form
 from ..interfaces import ITab, ITreeLeaf, ITreeBranch
 
 from ..auth import Auth
@@ -60,7 +61,7 @@ class AddContentContainer(AddForm):
 @form_component
 @name('login')
 @context(Auth)
-class Login(Form):
+class Login(Form,Breadcrumbs):
     subTitle='Login Form'
     title="ZODB Demo"
     fields = Fields(ILogin)
@@ -68,6 +69,9 @@ class Login(Form):
     @property
     def action_url(self):
         return self.request.url
+
+    def acquireTitle(self):
+        return "ZODB Demo"
 
     def breadcrumbs(self):
         return ''

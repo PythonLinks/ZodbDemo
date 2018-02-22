@@ -17,7 +17,7 @@ class ILogin(Interface):
         title='Password', required=True)
 
 
-class ITreeLeaf(ILeaf):
+class ITreeBase(Interface):
 
     title = TextLine(
         title='Title', required=True)
@@ -25,9 +25,12 @@ class ITreeLeaf(ILeaf):
     body = Text(
         title='Body', required=True)
 
-class ITreeBranch( IContainer,ITreeLeaf):
+class ITreeLeaf(ITreeBase,ILeaf):
     pass
 
-class IRootContainer(IPublicationRoot,ITreeBranch):
+class ITreeBranch( IContainer,ITreeBase):
+    pass
+
+class IRootContainer(IPublicationRoot,ITreeBase):
      pass
 

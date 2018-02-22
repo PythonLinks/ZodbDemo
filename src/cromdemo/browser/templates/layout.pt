@@ -8,7 +8,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8" />
-    <title>Cromlech demo</title>
+    <title>
+        ${view.acquireTitle() if hasattr(view,'acquireTitle') else ''}}
+    </title>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
@@ -65,16 +68,20 @@
       <img src="/fanstatic/zmiicons/PythonLinks.png" width="87"
 	   height="95" ></img>
 	 </div>
-      <h1>${view.title if hasattr(view,'title') else ''}</h1>
+    <h1>
+        ${view.acquireTitle() if hasattr(view,'acquireTitle') else ''}
+    </h1>${view}
             <h2>${view.subTitle if hasattr(view,'subTitle') else ''}</h2>
 
+   <div style="clear:both;"></div>
+	    
     <a name="content"></a>
 
 	<div id="main">
 	  <div tal:replace="structure slot:abovecontent" />
-	  <div tal:replace="structure slot:contextualactions" />
-	  <div tal:replace="structure slot:breadcrumbs" />
-	  <div id="content">
+	  	  <div tal:replace="structure slot:contextualactions" />
+                  ${structure: view.breadcrumbs() if  hasattr(view,'breadcrumbs') else ''}
+		  <div id="content">
 	    <div tal:replace="structure content" />
 	  </div>
 	</div>

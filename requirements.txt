@@ -1,6 +1,6 @@
 fanstatic
 arrow
-zope.copy
+
 git+https://github.com/Cromlech/crom#egg=crom
 git+https://github.com/Cromlech/grokker#egg=grokker
 
@@ -31,6 +31,5 @@ git+https://github.com/Cromlech/dolmen.tales#egg=dolmen.tales
 git+https://github.com/Cromlech/dolmen.template#egg=dolmen.template
 git+https://github.com/Cromlech/dolmen.view#egg=dolmen.view
 git+https://github.com/Cromlech/dolmen.viewlet#egg=dolmen.viewlet
-git+https://github.com/PythonLinks/zopache.crud#egg=zopache.crud
-git+https://github.com/PythonLinks/zopache.zmi#egg=zopache.zmi
-git+https://github.com/PythonLinks/zopache.copy#egg=zope.copy
+git+https://github.com/PythonLinks/zopache#egg=zopache
+git+https://github.com/PythonLinks/zopache.copy#egg=zopache.copy

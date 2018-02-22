@@ -1,10 +1,15 @@
 
 <div id="root">
-  <h1 tal:content="context.title" />
   <ul>
     <li tal:repeat="item context.values()">
       <a tal:content="item.title"
-	 tal:attributes="href view.url(item)" />  
+	 tal:attributes=
+	 "href view.url(item)" />  
     </li>
   </ul>
+<p> This is the defulat template for viewing containers.  You can modify it fo fit
+your application requiremtns. For now, all it does is show you the
+contents of this folder. 
+</p>
+
 </div>

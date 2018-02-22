@@ -9,7 +9,9 @@ from cromlech.security import Unauthorized
 from zope.interface import Interface
 from zope.interface.interfaces import ComponentLookupError
 from dolmen.container import IBTreeContainer
-from . import tal_template, ITab, Page, ErrorPage
+from . import tal_template, ITab
+from zopache.core.page import Page
+from zopache.core import ErrorPage
 from ..models import Root, Leaf
 from cromdemo.interfaces import IRootContainer
 from ..auth import logout

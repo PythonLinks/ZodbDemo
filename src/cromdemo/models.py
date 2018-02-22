@@ -3,7 +3,7 @@
 
 from zope.interface import implementer
 from zope.location import Location, locate
-from zopache.crud import Leaf, Container
+from zopache.core import Leaf, Container, RootContainer
 from .interfaces import ILogin, ITreeLeaf, ITreeBranch, IRootContainer
 from dolmen.container import BTreeContainer
 
@@ -27,11 +27,7 @@ class TreeLeaf(Leaf):
 
 
 @implementer(IRootContainer)
-class Root(Container):
-    title = u"Demo Root"
+class Root(RootContainer):
+    title = u"Zodb Demo"
     body=u'This is the root of the tree.'
-    def __init__(self):
-       BTreeContainer.__init__(self)        
-       #Needed For Cut Copy Paste
-       self.pasteFolder=Container()
-       self.__name__='root'    
+

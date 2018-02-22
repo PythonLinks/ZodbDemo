@@ -4,4 +4,9 @@
   <a tal:attributes="href view.url() + '/edit'">
     Edit content (admin only)
   </a>
+  <br> <br>
+<p> This is the defulat template for viewing Leaves.  You can modify it fo fit
+your application requiremtns.
+</p>
+
 </div>
