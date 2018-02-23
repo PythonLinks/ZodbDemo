@@ -70,7 +70,7 @@
 	 </div>
     <h1>
         ${view.acquireTitle() if hasattr(view,'acquireTitle') else ''}
-    </h1>${view}
+    </h1>
             <h2>${view.subTitle if hasattr(view,'subTitle') else ''}</h2>
 
    <div style="clear:both;"></div>
