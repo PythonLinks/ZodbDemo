@@ -15,5 +15,6 @@
   <grok:grok package="dolmen.message" />
     <grok:grok package="zopache.crud" />
         <grok:grok package="zopache.zmi" />
+	        <grok:grok package="zopache.copy" />
 
 </configure>

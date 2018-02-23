@@ -52,8 +52,8 @@ def populate_db(db):
             appRoot.__name__='root'
             root.appRoot=appRoot
             appRoot['green'] = TreeLeaf(title='Green leaf', body='A summer leaf')        
-            appRoot['yellow'] = TreeBranch(title='Brown Branch', body='You can add leaves to branches')
-            appRoot['red'] = TreeLeaf(title='Green leaf', body='A summer leaf')                    
+            appRoot['brown'] = TreeBranch(title='Brown Branch', body='You can add leaves to branches')
+            appRoot['red'] = TreeLeaf(title='Red leaf', body='A fall leaf')                    
             transaction.manager.commit()
 
 
