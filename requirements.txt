@@ -1,6 +1,6 @@
 fanstatic
 arrow
-
+uwsgi
 git+https://github.com/Cromlech/crom#egg=crom
 git+https://github.com/Cromlech/grokker#egg=grokker
 
