@@ -28,6 +28,6 @@ class TreeLeaf(Leaf):
 
 @implementer(IRootContainer)
 class Root(RootContainer):
-    title = u"Zodb Demo"
+    title = u"Zodb Crud Demo"
     body=u'This is the root of the tree.'
 
