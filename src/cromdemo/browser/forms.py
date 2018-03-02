@@ -63,7 +63,7 @@ class AddContentContainer(AddForm):
 @context(Auth)
 class Login(Form,Breadcrumbs):
     subTitle='Login Form'
-    title="ZODB Demo"
+    title="ZODB Crud Demo"
     fields = Fields(ILogin)
     ignoreContent = True
     @property

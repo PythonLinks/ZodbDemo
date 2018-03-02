@@ -1,6 +1,12 @@
 # This is the repository-wide ignore file. Suffixes below are ignored
 # i.e. committing not allowed.
 
+Data.fs
+Data.fs.lock
+Data.fs.tmp
+uwsgi.log
+uwsgi.pid
+
 # buildout junk
 .installed.cfg
 .mr.developer.cfg
