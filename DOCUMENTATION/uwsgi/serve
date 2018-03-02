@@ -1,0 +1,33 @@
+#!/bin/bash
+
+case "$1" in
+    daemon)
+        echo "Starting daemon"
+	uwsgi --http :8082 \
+	      -p4 \
+	      --static-map2 /favicon.ico=./favicon.ico \
+	      --wsgi-file server.py \
+              --daemonize ./data/uwsgi.log \
+              --pidfile  ./uwsgi.pid 
+        ;;
+    dev)
+        echo "Starting development server"
+	uwsgi --http :8082 \
+	      -p1 \
+	      --static-map2 /favicon.ico=./favicon.ico \
+	      --honour-stdin \
+	      --wsgi-file server.py 
+
+
+        ;;
+    stop)
+        echo "Stopping script uwsgi"
+         uwsgi --stop ./uwsgi.pid
+        ;;
+    *)
+        echo "Usage: /etc/init.d/uwsgi {dev|daemon|stop}"
+        exit 1
+    ;;
+esac
+
+exit 0
