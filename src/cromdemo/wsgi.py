@@ -70,6 +70,13 @@ def publish(environ, start_response, principal):
     if 'Host' in request.headers:
         request.host=request.headers['Host']
     
+
+    #When serving behind an NGINX server,
+    #the url is changed, so fix it
+    if hasattr(request,'Host'):
+       request.application_url = request.Host
+  
+    
     # The `Interaction` serves as the "who" in the security model.
     # The security model relies on 2 elements : the "who" and the "how".
     # The "how" is provided by the security guards declared with the
