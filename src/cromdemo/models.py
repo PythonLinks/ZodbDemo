@@ -4,7 +4,7 @@
 from zope.interface import implementer
 from zope.location import Location, locate
 from zopache.core import Leaf, Container, RootContainer
-from .interfaces import ILogin, ITreeLeaf, ITreeBranch, IRootContainer
+from .interfaces import ILogin, ITreeLeaf, ITreeBranch, ITreeRoot
 from dolmen.container import BTreeContainer
 
 @implementer(ITreeBranch)
@@ -26,7 +26,7 @@ class TreeLeaf(Leaf):
 
 
 
-@implementer(IRootContainer)
+@implementer(ITreeRoot)
 class Root(RootContainer):
     title = u"Zodb Crud Demo"
     body=u'This is the root of the tree.'

@@ -4,7 +4,7 @@ case "$1" in
     daemon)
         echo "Starting daemon"
 	source bin/activate
-	uwsgi --http :8081 \
+	uwsgi --http :8082 \
 	      --static-map2 /favicon.ico=./favicon.ico \
 	      --wsgi-file server.py \
               --daemonize ./data/uwsgi.log \
@@ -12,7 +12,7 @@ case "$1" in
         ;;
     dev)
         echo "Starting development server"
-	uwsgi --http :8081 \
+	uwsgi --http :8082x \
 	      -p1 \
 	      --static-map2 /favicon.ico=./favicon.ico \
 	      --honour-stdin \

@@ -1,8 +1,9 @@
 from zope.schema import Text, TextLine, Password
 from zope.interface import Interface
-from zopache.crud.interfaces import  (IEditableContainer,
-                                      IEditableLeaf,
-                                      IEditableRootContainer)
+from zopache.crud.interfaces import  (IContainer,
+                                      ILeaf,
+                                      IRootContainer,
+                                      IEditable)
 from cromlech.browser import IView
 
 
@@ -27,12 +28,12 @@ class ITreeBase(Interface):
     body = Text(
         title='Body', required=True)
 
-class ITreeLeaf(ITreeBase,ILeaf):
+class ITreeLeaf(ITreeBase,ILeaf,IEditable):
     pass
 
-class ITreeBranch( IEditableContainer,ITreeBase):
+class ITreeBranch( IContainer,ITreeBase,IEditable):
     pass
 
-class IRootContainer(IIEditableRootContainer,ITreeBase):
+class ITreeRoot(IRootContainer,ITreeBase,IEditable):
      pass
 
