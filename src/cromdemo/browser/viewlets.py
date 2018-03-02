@@ -107,7 +107,6 @@ class Tabs(Viewlet):
     def tabs(self):
         url = IURL(self.context, self.request)
         result = []
-        
         for id, view in self._tabs:
             result.append( {
                 'active': self.view.__class__ is view,

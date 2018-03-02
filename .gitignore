@@ -1,8 +1,15 @@
 # This is the repository-wide ignore file. Suffixes below are ignored
 # i.e. committing not allowed.
 
+
 #The ZODB Data files
 data
+
+Data.fs
+Data.fs.lock
+Data.fs.tmp
+uwsgi.log
+uwsgi.pid
 
 # buildout junk
 .installed.cfg

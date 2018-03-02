@@ -70,9 +70,9 @@ def publish(environ, start_response, principal):
     if 'Host' in request.headers:
         request.host=request.headers['Host']
     
+
     #When serving behind an NGINX server,
     #the url is changed, so fix it
-    import pdb;pdb.set_trace()
     if hasattr(request,'Host'):
        request.application_url = request.Host
   

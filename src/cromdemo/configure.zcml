@@ -13,8 +13,7 @@
   <grok:grok package="dolmen.forms.base" />
   <grok:grok package="dolmen.forms.ztk" />
   <grok:grok package="dolmen.message" />
-    <grok:grok package="zopache.crud" />
-        <grok:grok package="zopache.zmi" />
-	        <grok:grok package="zopache.copy" />
+    <grok:grok package="zopache" />
+    <grok:grok package="zopache.copy" />
 
 </configure>
