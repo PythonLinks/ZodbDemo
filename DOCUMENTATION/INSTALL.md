@@ -1,16 +1,11 @@
 Hello.
 I am very glad that you want to install this package.
+The instructions are below.
 
-The first step is very easy.
-git clone https://github.com/PythonLinks/ZodbDemo
+First I ask you to send me. lozinski@PythonLinks.info
+an email.  And say
+a few words aout why you are interested in the ZODB.
 
-I want this experience to be as nice as possible for everyone.
-But that takes feedback.  Too many people just download software, and then
-do not say anything.  A few days after you install it, I will ask you
-how it went, but that requires your email address.
-
-So please send me lozinski@PythonLinks.info an email, and I will give you
-read permission on the required github zopache repository. 
 
 The rest of the directions follow.
 
@@ -26,14 +21,17 @@ $> pip install -U pip setuptools
 $> pip install -r requirements.txt
 $> pip install -e .
 ```
+And then to run the debugging version.
+./serve dev
+To stop the development version
+type ctrl-c ^c
 
-I Recommend serving with Waittress.  It is from the Pyramid/Pylons
-projoect, so it is quite ZODB compatible.
+To run the daemon
+./serve daemon
 
-waitress-serve --listen=*:8080 server:application
+To stop the deamon:
+./serve stop
 
-You can now access
-http://127.0.0.1:8080 on your browser.
 
 There are 2 users created for the demo purposes:
 
