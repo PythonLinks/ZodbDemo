@@ -1,7 +1,7 @@
 <a id="introduction"></a>
-ZODB Demo
+ZODB Category Demo
 =============
-The ZODB is a graph database written in Python for Python developers.
+The ZODB is a graph database written in Python and optimized in C.
 Just subclass off of class Persistent Object and Persistent Container,
 and your Python objects, graphs, and applications become persistent.  
 
@@ -9,7 +9,14 @@ This ZODB Demo is the best way to get started with graph databases in Python.
 You start with a working web application which you can then easily
 customize to your requirements. 
 
-While the easy-to-use ZodbDemo is quite new, the underlying technologies  have been steadily evolving over the last 20 years.  They are superbly engineered by many very smart people.
+The ZODB Demo gives you a tree of categories.  It is esay to add new
+categories and items to those categories.  This demo supports both traditional
+CRUD, Create, Read, Update, and Delete, and the extended CRUD.  Copy and paste
+a branch.  Cut and paste a branch. 
+
+While the easy-to-use ZodbDemo is quite new, the underlying technologies
+have been steadily evolving over the last 20 years.  They are superbly
+engineered by many very smart people.
 
 USEFUL LINKS
 -------------
