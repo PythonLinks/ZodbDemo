@@ -41,19 +41,31 @@ def populate_db(db):
     Make sure to use a transaction manager to have it correctly persisted.
     """
     import transaction
-    from cromdemo.models import Root, TreeBranch,TreeLeaf
+    from cromdemo.models import RootCategory, Category, Item
     from cromlech.zodb import Connection
 
     with Connection(db, transaction_manager=transaction.manager) as conn:
         conn = db.open()
         root = conn.root()
         if not hasattr(root,'appRoot'):        
-            appRoot=Root()
+            appRoot=RootCategory()
             appRoot.__name__='root'
             root.appRoot=appRoot
-            appRoot['green'] = TreeLeaf(title='Green leaf', body='A summer leaf')        
-            appRoot['brown'] = TreeBranch(title='Brown Branch', body='You can add leaves to branches')
-            appRoot['red'] = TreeLeaf(title='Red leaf', body='A fall leaf')                    
+            category = Category(title='Tree Leaves',
+                        body='Tree Leaves go in this category')
+            appRoot['Leaves'] =category 
+            category['greenLeaf'] = Item(title='Green Leaf',
+                                        body='A summer leaf')  
+            category['redLeaf'] = Item(title='Red leaf',
+                                      body='A fall leaf')
+
+            category = Category(title='Cars',
+                        body='Cars go in this category')
+            appRoot['Cars'] =category 
+            category['Ford'] = Item(title='Ford Escort',
+                                        body='A boring Ford')  
+            category['Ferrari'] = Item(title='Ferrari',
+                                      body='An Exciting Ferari')
             transaction.manager.commit()
 
 

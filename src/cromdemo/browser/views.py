@@ -12,7 +12,7 @@ from dolmen.container import IBTreeContainer
 from . import tal_template, ITab
 from zopache.core.page import Page
 from zopache.core import ErrorPage
-from ..models import Root, Leaf
+from ..models import Category, Item, RootCategory
 from cromdemo.interfaces import IRootContainer
 from ..auth import logout
 from cromlech.browser.directives import title
@@ -34,17 +34,17 @@ class Logout(Page):
 @name('index')
 @title('View')
 @context(IBTreeContainer)
-class RootIndex(Page):
-    title='ZODB Demno'
-    subTitle='View a Branch'
+class CategoryIndex(Page):
+    title='Category Demo'
+    subTitle='View a Category'
     template = tal_template('home.pt')
 
 @view_component
 @name('index')
 @target(ITab)
-@context(Leaf)
+@context(Item)
 @order(10)
-class LeafIndex(Page):
+class ItemIndex(Page):
     template = tal_template('leaf.pt')
     subTitle='View a Leaf'
     title='ZODB Demno'

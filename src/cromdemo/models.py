@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
 from zope.interface import implementer
-from zope.location import Location, locate
 from zopache.core import Leaf, Container, RootContainer
-from .interfaces import ILogin, ITreeLeaf, ITreeBranch, ITreeRoot
-from dolmen.container import BTreeContainer
+from .interfaces import ILogin, IItem, ICategory, IRootCategory
 
-@implementer(ITreeBranch)
-class TreeBranch(Container):
+@implementer(ICategory)
+class Category(Container):
     icon='zmiicons/branch.svg'
     def __init__(self, title='', body=''):
         Container.__init__(self)
@@ -16,8 +13,8 @@ class TreeBranch(Container):
         self.body = body        
 
 
-@implementer(ITreeLeaf)
-class TreeLeaf(Leaf):
+@implementer(IItem)
+class Item(Leaf):
     icon='zmiicons/leaf.svg'
     def __init__(self, title='', body=''):
         Leaf.__init__(self)
@@ -26,8 +23,8 @@ class TreeLeaf(Leaf):
 
 
 
-@implementer(ITreeRoot)
-class Root(RootContainer):
-    title = u"Zodb Crud Demo"
-    body=u'This is the root of the tree.'
+@implementer(IRootCategory)
+class RootCategory(RootContainer):
+    title = u"Category Demo"
+    body=u'This is the root of the category tree.'
 

@@ -11,7 +11,6 @@ from cromlech.security import unauthenticated_principal as anonymous
 from cromlech.webob.request import Request
 from cromlech.browser import setSession
 
-from .models import TreeLeaf, Root ,TreeBranch
 from .auth import Auth, secured
 from .security import secure_query_view
 

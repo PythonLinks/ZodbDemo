@@ -17,43 +17,43 @@ from zopache.core.baseform import Form
 
 from zopache.core.breadcrumbs import Breadcrumbs
 from zopache.crud.forms  import  AddForm 
-from ..interfaces import ITab, ITreeLeaf, ITreeBranch
+from ..interfaces import ITab, IItem, IRootCategory, ICategory
 
 from ..auth import Auth
 from ..interfaces import  ILogin
 from zopache.crud.interfaces import ILeaf, IContainer
-from cromdemo.models import  TreeBranch
-from cromdemo.models import  TreeLeaf
+from cromdemo.models import  Category
+from cromdemo.models import  Item
 from dolmen.container import IBTreeContainer, BTreeContainer
 from dolmen.template import TALTemplate
 from zopache.crud.interfaces import IApp
 
 @form_component
-@name('addLeaf')
+@name('addItem')
 @context(IBTreeContainer)
 @target(ITab)
-@title("Add Tree Leaf")
+@title("Add Item")
 @permissions('Manage')
 class AddContent(AddForm):
-    subTitle='Add a Tree Leaf'
+    subTitle='Add an Item'
     implements = IApp
-    interface = ITreeLeaf
+    interface = IItem
     ignoreContent = True
-    factory=TreeLeaf
+    factory=Item
 
 
 @form_component
-@name('addBranch')
+@name('addCategory')
 @context(IBTreeContainer)
 @target(ITab)
-@title("Add Tree Branch")
+@title("Add Category")
 @permissions('Manage')
 class AddContentContainer(AddForm):
     subTitle='Add a Tree Branch'
     implements = IApp
-    interface = ITreeBranch
+    interface = ICategory
     ignoreContent = True
-    factory=TreeBranch
+    factory=Category
 
 
 

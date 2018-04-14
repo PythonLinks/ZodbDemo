@@ -28,12 +28,12 @@ class ITreeBase(Interface):
     body = Text(
         title='Body', required=True)
 
-class ITreeLeaf(ITreeBase,ILeaf,IEditable):
+class IItem(ITreeBase,ILeaf,IEditable):
     pass
 
-class ITreeBranch( IContainer,ITreeBase,IEditable):
+class ICategory( IContainer,ITreeBase,IEditable):
     pass
 
-class ITreeRoot(IRootContainer,ITreeBase,IEditable):
+class IRootCategory(IRootContainer,ITreeBase,IEditable):
      pass
 
